@@ -22,8 +22,11 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
+      var list = $('#change');
+      console.log(list.scrollHeight);
       socket.on('change', function(pkg){
-        $('#change').append($('<li>').text(pkg.name + ", " + pkg.version + ": " + pkg.author));
+        list.append($('<li>').text(pkg.name + ", " + pkg.version + ": " + pkg.author));
+        list.animate({scrollTop:list.scrollHeight}, 1000);
       });
     </script>
   </body>
