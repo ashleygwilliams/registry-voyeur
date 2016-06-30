@@ -5,7 +5,7 @@ const io = require('socket.io')(http);
 const ChangesStream = require('changes-stream');
 
 const changes = new ChangesStream({
-  db: 'http://replicate.npmjs.com',
+  db: 'https://replicate.npmjs.com',
   since: "now",
   include_docs: true
 });
