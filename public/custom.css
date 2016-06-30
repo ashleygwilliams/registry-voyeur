@@ -1,0 +1,13 @@
+body {
+  text-align: center;
+}
+
+header {
+  margin: 100px 0;
+}
+
+ul {
+  font-size: 3em;
+  list-style-type: none;
+  font-style: bold;
+}

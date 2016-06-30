@@ -2,10 +2,19 @@
 <html>
   <head>
     <title>npm registry-voyeur</title>
+    <link rel="stylesheet" href="Skeleton-2.0.4/css/normalize.css" />
+    <link rel="stylesheet" href="Skeleton-2.0.4/css/skeleton.css" />
+    <link rel="stylesheet" href="custom.css" />
   </head>
   <body>
     <div class="container">
-      <h1>npm registry voyeur</h1>
+      <header>
+        <img src="eyes.png" alt="eyes" />
+        <img src="soon.png" alt="soon" />
+        <img src="package.png" alt="package" />
+        <img src="package.png" alt="package" />
+        <img src="package.png" alt="package" />
+      </header>
       <ul id="change">
       </ul>
     </div>
@@ -14,7 +23,7 @@
     <script>
       var socket = io();
       socket.on('change', function(pkg){
-        $('#change').append($('<li>').text(pkg));
+        $('#change').append($('<li>').text(pkg.name + ", " + pkg.version + ": " + pkg.author));
       });
     </script>
   </body>

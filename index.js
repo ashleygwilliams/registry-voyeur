@@ -1,4 +1,5 @@
-const app = require('express')();
+const express = require('express');
+const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
@@ -10,13 +11,20 @@ const changes = new ChangesStream({
   include_docs: true
 });
 
+app.use(express.static('public'));
+
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', function(socket){
   changes.on('data', function(change) {
-    socket.emit('change', change.doc.name)
+    var version = change.doc["dist-tags"].latest;
+    socket.emit('change', {
+      name: change.doc.name,
+      author: change.doc.versions[version]._npmUser.name,
+      version: version
+    })
   }); 
 });
 
