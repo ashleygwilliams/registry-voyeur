@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <title>npm registry-voyeur</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>npm registry voyeur</h1>
+      <ul id="change">
+      </ul>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      socket.on('change', function(pkg){
+        $('#change').append($('<li>').text(pkg));
+      });
+    </script>
+  </body>
+</html>
